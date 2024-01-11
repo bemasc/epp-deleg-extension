@@ -108,7 +108,7 @@ A conforming implementation <bcp14>MUST NOT</bcp14> require the use of these or 
 
 </section>
 
-<section target="extension-elements">
+<section anchor="extension-elements">
 <name>Extension elements</name>
 
 <t>
