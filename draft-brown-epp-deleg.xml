@@ -108,7 +108,7 @@ A conforming implementation <bcp14>MUST NOT</bcp14> require the use of these or 
 
 </section>
 
-<section>
+<section target="extension-elements">
 <name>Extension elements</name>
 
 <t>
@@ -161,25 +161,49 @@ Example <tt>&lt;deleg:deleg&gt;</tt> element:
 <section>
 <name>EPP command mapping</name>
 
-  <section>
-  <name>EPP query commands</name>
-    <section>
-      <name>EPP <tt>&lt;info&gt;</tt> command</name>
-      <t>TODO</t>
-    </section>
-  </section>
+<section>
+<name>EPP query commands</name>
 
-  <section>
-  <name>EPP transform commands</name>
-    <section>
-      <name>EPP <tt>&lt;create&gt;</tt> command</name>
-      <t>TODO</t>
-    </section>
-    <section>
-      <name>EPP <tt>&lt;update&gt;</tt> command</name>
-      <t>TODO</t>
-    </section>
-  </section>
+<section>
+<name>EPP <tt>&lt;info&gt;</tt> command</name>
+
+<t>
+This extension defines an additional element for EPP <tt>&lt;info&gt;</tt> responses for domain object.
+</t>
+
+<t>
+When a server receives a domain or host <tt>&lt;info&gt;</tt> command from a client which included the extension namespace in the <tt>&lt;svcExtension&gt;</tt> element of the <tt>&lt;login&gt;</tt> command, the response <bcp14>MUST</bcp14> contain an <tt>&lt;extension&gt;</tt> element, which <bcp14>MUST</bcp14> contain a <tt>&lt;deleg:infData&gt;</tt> element.
+This element <bcp14>MAY</bcp14> contain one or more <tt>&lt;deleg:deleg&gt;</tt> elements as described in <xref target="extension-elements"/>.
+</t>
+
+<t>
+Example domain <tt>&lt;info&gt;</tt> response:
+</t>
+
+<sourcecode><![CDATA[TODO]]></sourcecode>
+
+</section>
+
+</section>
+
+<section>
+<name>EPP transform commands</name>
+
+<section>
+<name>EPP <tt>&lt;create&gt;</tt> command</name>
+
+<t>TODO</t>
+
+</section>
+
+<section>
+<name>EPP <tt>&lt;update&gt;</tt> command</name>
+
+<t>TODO</t>
+
+</section>
+
+</section>
 
 </section>
 
