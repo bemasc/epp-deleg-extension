@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rfc version="3"
+  ipr="trust200902"
+  docName="draft-brown-epp-deleg-00"
+  submissionType="IETF"
+  category="std"
+  xml:lang="en"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  indexInclude="true"
+  consensus="true">
+
+<front>
+  
+<title abbrev="EPP DELEG Extension">
+Extensible Provisioning Protocol (EPP) mapping for DELEG records
+</title>
+
+<seriesInfo
+  value="draft-brown-epp-deleg"
+  stream="IETF"
+  status="standard"
+  name="Internet-Draft"/>
+
+<author
+  initials="G."
+  surname="Brown"
+  fullname="Gavin Brown">
+  <organization>ICANN</organization>
+  <address>
+    <postal>
+      <street>12025 Waterfront Drive, Suite 300</street>
+      <city>Los Angeles</city>
+      <code>90094-2536</code>
+      <country>US</country>
+      <region>CA</region>
+    </postal>
+    <email>gavin.brown@icann.org</email>
+  </address>
+</author>
+
+<date/>
+
+<area>Internet</area>
+
+<workgroup>Registration Extensions (REGEXT)</workgroup>
+
+<abstract><t>
+This document describes an extension to the Extensible Provisioning Protocol (<xref target="STD69"/>) which allows clients to provision <tt>DELEG</tt> records for domain names.
+</t></abstract>
+
+<note title="About this draft" removeInRFC="true"><t>
+The source for this draft, and an issue tracker, may can be found at <eref target="https://github.com/gbxyz/epp-deleg-extension"/>.
+</t></note>
+
+</front>
+
+<middle>
+
+<section anchor="introduction"><name>Introduction</name>
+
+<t>
+A small group of DNS engineers is currently working on a document entitled "Extensible Delegation for DNS" (<xref target="DELEG"/>), which aims to provide an enhanced method of delegation in the DNS, as an alternative to the traditional <tt>NS</tt> record.
+</t>
+
+<t>
+This proposal has the potential to address many long-standing issues affecting the DNS. While it has yet to be brought to the IETF in a formal submission, it has generated significant interest.
+</t>
+
+<t>
+Past experience with innovation inb the DNS suggest that the success or failure of a new technology can depend on how quickly the provisioning side of the domain name industry moves to support the new technology.
+</t>
+
+<t>
+Therefore, this document has been created to describe an extension to the EPP domain mapping (<xref target="RFC5731"/>) to allow EPP clients to provision <tt>DELEG</tt> records for domain names in an EPP server.
+</t>
+
+</section>
+
+<section><name>Conventions used in this document</name>
+
+<t>
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all capitals, as shown here.
+</t>
+
+<t>
+In examples, "C:" represents lines sent by a protocol client and "S:" represents lines returned by a protocol server.
+Indentation and white space in examples are provided only to illustrate element relationships and are not required features of this protocol.
+</t>
+
+<t>
+A protocol client that is authorized to manage an existing object is described as a "sponsoring" client throughout this document.
+</t>
+
+<t>
+XML is case sensitive.
+Unless stated otherwise, XML specifications and examples provided in this document <bcp14>MUST</bcp14> be interpreted in the character case presented in order to develop a conforming implementation.
+</t>
+
+<t>
+EPP uses XML namespaces to provide an extensible object management framework and to identify schemas required for XML instance parsing and validation.
+These namespaces and schema definitions are used to identify both the base protocol schema and the schemas for managed objects.
+</t>
+
+<t>
+The XML namespace prefixes used in examples (such as the string <tt>deleg</tt> in <tt>deleg:create</tt>) are solely for illustrative purposes.
+A conforming implementation <bcp14>MUST NOT</bcp14> require the use of these or any other specific namespace prefixes.
+</t>
+
+</section>
+
+<section><name>Extension elements</name>
+<t>TODO</t>
+</section>
+
+<section><name>EPP command mapping</name>
+
+<section><name>EPP query commands</name>
+<t>TODO</t>
+</section>
+
+<section><name>EPP transform commands</name>
+<t>TODO</t>
+</section>
+
+</section>
+
+<section><name>Security considerations</name>
+<t>TODO</t>
+</section>
+
+<section><name>IANA considerations</name>
+<t>TODO</t>
+</section>
+
+</middle>
+
+<back>
+  <references>
+    <name>Normative References</name>
+    <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+    <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+    <xi:include href="https://bib.ietf.org/public/rfc/bibxml9/reference.STD.0069.xml"/>
+    <reference anchor="DELEG" target="https://github.com/fl1ger/deleg">
+      <front>
+        <title>Extensible Delegation for DNS</title>
+        <author fullname="Tim April"/>
+        <author fullname="Petr Špaček"/>
+        <author fullname="Ralf Weber"/>
+        <author fullname="David C Lawrence"/>
+      </front>
+    </reference>
+  </references>
+</back>
+
+</rfc>
