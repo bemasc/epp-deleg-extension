@@ -7,7 +7,7 @@ This proposal has the potential to address many long-standing issues
 affecting the DNS. While it has yet to be brought to the IETF in a
 formal submission, it has generated significant interest.
 
-Past experience with innovation inb the DNS suggest that the success or
+Past experience with innovations in the DNS suggests that the success or
 failure of a new technology can depend on how quickly the provisioning
 side of the domain name industry moves to support the new technology.
 

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rfc version="3"
+<rfc
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  version="3"
   ipr="trust200902"
   docName="draft-brown-epp-deleg-00"
   submissionType="IETF"
   category="std"
   xml:lang="en"
-  xmlns:xi="http://www.w3.org/2001/XInclude"
   indexInclude="true"
   consensus="true">
 
 <front>
-  
+
 <title abbrev="EPP DELEG Extension">
 Extensible Provisioning Protocol (EPP) mapping for DELEG records
 </title>
@@ -21,21 +22,18 @@ Extensible Provisioning Protocol (EPP) mapping for DELEG records
   status="standard"
   name="Internet-Draft"/>
 
-<author
-  initials="G."
-  surname="Brown"
-  fullname="Gavin Brown">
-  <organization>ICANN</organization>
-  <address>
-    <postal>
-      <street>12025 Waterfront Drive, Suite 300</street>
-      <city>Los Angeles</city>
-      <code>90094-2536</code>
-      <country>US</country>
-      <region>CA</region>
-    </postal>
-    <email>gavin.brown@icann.org</email>
-  </address>
+<author initials="G." surname="Brown" fullname="Gavin Brown">
+<organization>ICANN</organization>
+<address>
+<postal>
+<street>12025 Waterfront Drive, Suite 300</street>
+<city>Los Angeles</city>
+<code>90094-2536</code>
+<country>US</country>
+<region>CA</region>
+</postal>
+<email>gavin.brown@icann.org</email>
+</address>
 </author>
 
 <date/>
@@ -56,7 +54,8 @@ The source for this draft, and an issue tracker, may can be found at <eref targe
 
 <middle>
 
-<section anchor="introduction"><name>Introduction</name>
+<section anchor="introduction">
+<name>Introduction</name>
 
 <t>
 A small group of DNS engineers is currently working on a document entitled "Extensible Delegation for DNS" (<xref target="DELEG"/>), which aims to provide an enhanced method of delegation in the DNS, as an alternative to the traditional <tt>NS</tt> record.
@@ -67,7 +66,7 @@ This proposal has the potential to address many long-standing issues affecting t
 </t>
 
 <t>
-Past experience with innovation inb the DNS suggest that the success or failure of a new technology can depend on how quickly the provisioning side of the domain name industry moves to support the new technology.
+Past experience with innovations in the DNS suggests that the success or failure of a new technology can depend on how quickly the provisioning side of the domain name industry moves to support the new technology.
 </t>
 
 <t>
@@ -76,7 +75,8 @@ Therefore, this document has been created to describe an extension to the EPP do
 
 </section>
 
-<section><name>Conventions used in this document</name>
+<section>
+<name>Conventions used in this document</name>
 
 <t>
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all capitals, as shown here.
@@ -108,48 +108,117 @@ A conforming implementation <bcp14>MUST NOT</bcp14> require the use of these or 
 
 </section>
 
-<section><name>Extension elements</name>
-<t>TODO</t>
+<section>
+<name>Extension elements</name>
+
+<t>
+This document defines a new element, <tt>&lt;deleg:deleg&gt;</tt>, which appears in query and transform commands for domain objects.
+</t>
+
+<t>
+This element is a representation of a <tt>DELEG</tt> record in XML.
+Note that <tt>DELEG</tt> records have the same format as <tt>SVCB</tt> records (<xref target="RFC9460"/>).
+</t>
+
+<t>
+The <tt>&lt;deleg:deleg&gt;</tt> element has the following attributes:
+</t>
+
+<ul>
+
+<li>
+a <tt>priority</tt> attribute, which is an integer that corresponds to the <tt>SvcPriority</tt> field;
+</li>
+
+<li>
+a <tt>target</tt> attribute, which is an integer that corresponds to the <tt>TargetName</tt> field.
+</li>
+
+</ul>
+
+<t>
+The <tt>&lt;deleg:deleg&gt;</tt> element has a single child element, <tt>&lt;deleg:params&gt;</tt>, which corresponds to the <tt>svcParams</tt> field.
+<tt>DELEG</tt> record SvcParams are mapped onto this element's attributes, with <tt>SvcParamKey</tt> being the attribute name, and <tt>SvcParamValue</tt> being its value.
+</t>
+
+<t>
+Example <tt>&lt;deleg:deleg&gt;</tt> element:
+</t>
+
+<sourcecode><![CDATA[
+<deleg:deleg
+  priority="0"
+  target="ns1.example.com">
+  <deleg:params
+    alpn="dot"
+    tlsa="2 0 1 ABC..."
+    ipv4hint="192.0.2.1"
+    ipv6hint="2001:DB8::1"/>
+</deleg:deleg>
+]]></sourcecode>
 </section>
 
-<section><name>EPP command mapping</name>
+<section>
+<name>EPP command mapping</name>
 
-<section><name>EPP query commands</name>
-<t>TODO</t>
+  <section>
+  <name>EPP query commands</name>
+    <section>
+      <name>EPP <tt>&lt;info&gt;</tt> command</name>
+      <t>TODO</t>
+    </section>
+  </section>
+
+  <section>
+  <name>EPP transform commands</name>
+    <section>
+      <name>EPP <tt>&lt;create&gt;</tt> command</name>
+      <t>TODO</t>
+    </section>
+    <section>
+      <name>EPP <tt>&lt;update&gt;</tt> command</name>
+      <t>TODO</t>
+    </section>
+  </section>
+
 </section>
 
-<section><name>EPP transform commands</name>
-<t>TODO</t>
+<section>
+  <name>Security considerations</name>
+  <t>TODO</t>
 </section>
 
+<section>
+  <name>Formal syntax</name>
+  <t>TODO</t>
 </section>
 
-<section><name>Security considerations</name>
-<t>TODO</t>
-</section>
-
-<section><name>IANA considerations</name>
-<t>TODO</t>
+<section>
+  <name>IANA considerations</name>
+  <t>TODO</t>
 </section>
 
 </middle>
 
 <back>
-  <references>
-    <name>Normative References</name>
-    <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
-    <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
-    <xi:include href="https://bib.ietf.org/public/rfc/bibxml9/reference.STD.0069.xml"/>
-    <reference anchor="DELEG" target="https://github.com/fl1ger/deleg">
-      <front>
-        <title>Extensible Delegation for DNS</title>
-        <author fullname="Tim April"/>
-        <author fullname="Petr Špaček"/>
-        <author fullname="Ralf Weber"/>
-        <author fullname="David C Lawrence"/>
-      </front>
-    </reference>
-  </references>
+
+<references>
+  <name>Normative References</name>
+  <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+  <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+  <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9460.xml"/>
+  <xi:include href="https://bib.ietf.org/public/rfc/bibxml9/reference.STD.0069.xml"/>
+  <reference anchor="DELEG" target="https://github.com/fl1ger/deleg">
+    <front>
+      <title>Extensible Delegation for DNS</title>
+      <author fullname="Tim April"/>
+      <author fullname="Petr Špaček"/>
+      <author fullname="Ralf Weber"/>
+      <author fullname="David C Lawrence"/>
+    </front>
+  </reference>
+</references>
+
 </back>
 
 </rfc>
