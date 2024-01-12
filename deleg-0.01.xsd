@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="urn:ietf:params:xml:ns:epp:deleg-0.01"
+  xmlns:deleg="urn:ietf:params:xml:ns:epp:deleg-0.01"
+  xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+  elementFormDefault="qualified">
+  <annotation>
+    <documentation>
+      Extensible Provisioning Protocol v1.0 extension
+      schema for DELEG records.
+    </documentation>
+  </annotation>
+
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"/>
+
+  <!--
+    a <deleg> element looks like this:
+  -->
+  <complexType name="delegType">
+    <attribute name="priority" type="unsignedShort"/>
+    <attribute name="target" type="eppcom:labelType"/>
+    <sequence>
+      <element name="params" minOccurs="0">
+        <anyAttribute/>
+      </element>
+    </sequence>
+  </complexType>
+
+  <!--
+    The <info> and <create> extension elements look the same
+  -->
+  <element name="info" type="deleg:containerType"/>
+  <element name="create" type="deleg:containerType"/>
+
+  <complexType name="containerType">
+    <sequence>
+      <element
+        name="deleg"
+        type="deleg:delegType"
+        minOccurs="1"
+        maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <!--
+    but the <update> element has <rem> and <add> elements
+  -->
+  <element name="update" type="deleg:updateType"/>
+
+  <!--
+    but the <rem> and <add> elements *also* look like
+    the <info> and <create> elements
+  -->
+  <complexType name="updateType">
+    <sequence>
+      <element
+        name="rem"
+        type="deleg:containerType"
+        minOccurs="0"
+        maxOccurs="1"/>
+      <element
+        name="add"
+        type="deleg:containerType"
+        minOccurs="0"
+        maxOccurs="1"/>
+    </sequence>
+  </complexType>
+
+</schema>
