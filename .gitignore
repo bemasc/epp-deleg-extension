@@ -1,2 +1,4 @@
-*.txt
-*.html
+/*.txt
+/*.html
+/*.xml
+examples/*.txt

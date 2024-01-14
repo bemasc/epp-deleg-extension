@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE rfc [
+<!ENTITY RFC2119 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
+<!ENTITY RFC8174 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml">
+<!ENTITY RFC9460 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9460.xml">
+<!ENTITY STD0069 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.STD.0069.xml">
+]>
+
 <rfc
   xmlns:xi="http://www.w3.org/2001/XInclude"
   version="3"
@@ -228,10 +236,10 @@ Example domain <tt>&lt;info&gt;</tt> response:
 
 <references>
   <name>Normative References</name>
-  <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
-  <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
-  <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9460.xml"/>
-  <xi:include href="https://bib.ietf.org/public/rfc/bibxml9/reference.STD.0069.xml"/>
+  &RFC2119;
+  &RFC8174;
+  &RFC9460;
+  &STD0069;
   <reference anchor="DELEG" target="https://github.com/fl1ger/deleg">
     <front>
       <title>Extensible Delegation for DNS</title>
