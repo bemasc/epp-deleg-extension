@@ -18,13 +18,11 @@
     a <deleg> element looks like this:
   -->
   <complexType name="delegType">
+    <sequence>
+      <element name="params" type="deleg:paramType" minOccurs="0"/>
+    </sequence>
     <attribute name="priority" type="unsignedShort"/>
     <attribute name="target" type="eppcom:labelType"/>
-    <sequence>
-      <element name="params" minOccurs="0">
-        <anyAttribute/>
-      </element>
-    </sequence>
   </complexType>
 
   <!--
