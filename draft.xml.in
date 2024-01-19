@@ -44,6 +44,20 @@ Extensible Provisioning Protocol (EPP) mapping for DELEG records
 </address>
 </author>
 
+<author initials="P." surname="Hoffman" fullname="Paul Hoffman">
+<organization>ICANN</organization>
+<address>
+<postal>
+<street>12025 Waterfront Drive, Suite 300</street>
+<city>Los Angeles</city>
+<code>90094-2536</code>
+<country>US</country>
+<region>CA</region>
+</postal>
+<email>paul.hoffman@icann.org</email>
+</address>
+</author>
+
 <date/>
 
 <area>Internet</area>
