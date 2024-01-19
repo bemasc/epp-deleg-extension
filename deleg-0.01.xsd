@@ -61,15 +61,13 @@
   <complexType name="updateType">
     <sequence>
       <element
-        name="rem"
-        type="deleg:containerType"
-        minOccurs="0"
-        maxOccurs="1"/>
-      <element
         name="add"
         type="deleg:containerType"
-        minOccurs="0"
-        maxOccurs="1"/>
+        minOccurs="0"/>
+      <element
+        name="rem"
+        type="deleg:containerType"
+        minOccurs="0"/>
     </sequence>
   </complexType>
 
