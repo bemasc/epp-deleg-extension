@@ -33,7 +33,8 @@
   </complexType>
 
   <!--
-    The <info> and <create> extension elements look the same
+    the <info> response and <create> command extensions are just a simple set
+    of deleg records
   -->
 
   <element name="infData" type="deleg:containerType"/>
@@ -50,12 +51,12 @@
   </complexType>
 
   <!--
-    but the <update> element has <rem> and <add> elements
+    the <update> extension element has <add> and <rem> elements
   -->
   <element name="update" type="deleg:updateType"/>
 
   <!--
-    but the <rem> and <add> elements *also* look like
+    but the <add> and <rem> elements *also* look like
     the <info> and <create> elements
   -->
   <complexType name="updateType">
