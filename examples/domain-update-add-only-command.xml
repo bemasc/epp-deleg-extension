@@ -18,15 +18,6 @@
               ipv6hint="2001:DB8::3"/>
           </deleg:deleg>
         </deleg:add>
-        <deleg:rem>
-          <deleg:deleg priority="0" target="ns1.example.com">
-            <deleg:params
-              alpn="dot"
-              tlsa="2 0 1 ABC..."
-              ipv4hint="192.0.2.1"
-              ipv6hint="2001:DB8::1"/>
-          </deleg:deleg>
-        </deleg:rem>
       </deleg:update>
     </extension>
     <clTRID>ABC-12345</clTRID>
