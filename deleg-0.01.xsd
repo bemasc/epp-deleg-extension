@@ -35,7 +35,8 @@
   <!--
     The <info> and <create> extension elements look the same
   -->
-  <element name="info" type="deleg:containerType"/>
+
+  <element name="infData" type="deleg:containerType"/>
   <element name="create" type="deleg:containerType"/>
 
   <complexType name="containerType">
