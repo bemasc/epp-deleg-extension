@@ -14,62 +14,37 @@
 
   <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"/>
 
-  <!--
-    a <deleg> element looks like this:
-  -->
-  <complexType name="delegType">
-    <sequence>
-      <element name="params" type="deleg:paramType" minOccurs="0"/>
-    </sequence>
-    <attribute name="priority" type="unsignedShort"/>
-    <attribute name="target" type="eppcom:labelType"/>
-  </complexType>
-
-  <!--
-    svcParam container element
-  -->
-  <complexType name="paramType">
-    <anyAttribute processContents="skip"/>
-  </complexType>
-
-  <!--
-    the <info> response and <create> command extensions are just a simple set
-    of deleg records
-  -->
-
   <element name="infData" type="deleg:containerType"/>
   <element name="create" type="deleg:containerType"/>
+  <element name="update" type="deleg:updateType"/>
+
+  <complexType name="updateType">
+    <sequence>
+      <element name="add" type="deleg:containerType"
+        minOccurs="0"/>
+      <element name="rem" type="deleg:containerType"
+        minOccurs="0"/>
+    </sequence>
+  </complexType>
 
   <complexType name="containerType">
     <sequence>
-      <element
-        name="deleg"
-        type="deleg:delegType"
+      <element name="deleg" type="deleg:delegType"
         minOccurs="0"
         maxOccurs="unbounded"/>
     </sequence>
   </complexType>
 
-  <!--
-    the <update> extension element has <add> and <rem> elements
-  -->
-  <element name="update" type="deleg:updateType"/>
-
-  <!--
-    but the <add> and <rem> elements *also* look like
-    the <info> and <create> elements
-  -->
-  <complexType name="updateType">
+  <complexType name="delegType">
     <sequence>
-      <element
-        name="add"
-        type="deleg:containerType"
-        minOccurs="0"/>
-      <element
-        name="rem"
-        type="deleg:containerType"
+      <element name="params" type="deleg:paramType"
         minOccurs="0"/>
     </sequence>
+    <attribute name="priority" type="unsignedShort"/>
+    <attribute name="target" type="eppcom:labelType"/>
   </complexType>
 
+  <complexType name="paramType">
+    <anyAttribute processContents="skip"/>
+  </complexType>
 </schema>
