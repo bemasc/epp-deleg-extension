@@ -44,7 +44,7 @@
       <element
         name="deleg"
         type="deleg:delegType"
-        minOccurs="1"
+        minOccurs="0"
         maxOccurs="unbounded"/>
     </sequence>
   </complexType>
