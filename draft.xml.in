@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE rfc [
+
+<!ENTITY VERSION "0.01">
+<!ENTITY RFC2119 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
+<!ENTITY RFC3688 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3688.xml">
+<!ENTITY RFC7451 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7451.xml">
+<!ENTITY RFC8174 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml">
+<!ENTITY RFC9460 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9460.xml">
+<!ENTITY STD0069 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.STD.0069.xml">
+
+]>
+
+<rfc
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  version="3"
+  ipr="trust200902"
+  docName="draft-brown-epp-deleg-00"
+  submissionType="IETF"
+  category="std"
+  xml:lang="en"
+  indexInclude="true"
+  consensus="true">
+
+<front>
+
+<title abbrev="EPP DELEG Extension">
+Extensible Provisioning Protocol (EPP) mapping for DELEG records
+</title>
+
+<seriesInfo
+  value="draft-brown-epp-deleg"
+  stream="IETF"
+  status="standard"
+  name="Internet-Draft"/>
+
+<author initials="G." surname="Brown" fullname="Gavin Brown">
+<organization>ICANN</organization>
+<address>
+<postal>
+<street>12025 Waterfront Drive, Suite 300</street>
+<city>Los Angeles</city>
+<code>90094-2536</code>
+<country>US</country>
+<region>CA</region>
+</postal>
+<email>gavin.brown@icann.org</email>
+</address>
+</author>
+
+<author initials="P." surname="Hoffman" fullname="Paul Hoffman">
+<organization>ICANN</organization>
+<address>
+<postal>
+<street>12025 Waterfront Drive, Suite 300</street>
+<city>Los Angeles</city>
+<code>90094-2536</code>
+<country>US</country>
+<region>CA</region>
+</postal>
+<email>paul.hoffman@icann.org</email>
+</address>
+</author>
+
+<date/>
+
+<area>Internet</area>
+
+<workgroup>Registration Extensions (REGEXT)</workgroup>
+
+<abstract><t>
+This document describes an extension to the Extensible Provisioning Protocol (<xref target="STD69"/>) which allows clients to provision <tt>DELEG</tt> records for domain names.
+</t></abstract>
+
+<note title="About this draft" removeInRFC="true"><t>
+The source for this draft, and an issue tracker, may can be found at <eref target="https://github.com/gbxyz/epp-deleg-extension"/>.
+</t></note>
+
+</front>
+
+<middle>
+
+<section anchor="introduction">
+<name>Introduction</name>
+
+<t>
+A small group of DNS engineers is currently working on a document entitled "Extensible Delegation for DNS" (<xref target="DELEG"/>), which aims to provide an enhanced method of delegation in the DNS, as an alternative to the traditional <tt>NS</tt> record.
+</t>
+
+<!--<t>
+This proposal has the potential to address many long-standing issues affecting the DNS. While it has yet to be brought to the IETF in a formal submission, it has generated significant interest.
+</t>
+
+<t>
+Past experience with innovations in the DNS suggests that the success or failure of a new technology can depend on how quickly the provisioning side of the domain name industry moves to support the new technology.
+</t> -->
+
+<t>
+<!-- Therefore, this document has been created to describe -->This document describes an extension to the EPP domain mapping (<xref target="RFC5731"/>) to allow EPP clients to provision <tt>DELEG</tt> records for domain names in an EPP server.
+</t>
+
+</section>
+
+<section>
+<name>Conventions used in this document</name>
+
+<t>
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all capitals, as shown here.
+</t>
+
+<t>
+In examples, "C:" represents lines sent by a protocol client and "S:" represents lines returned by a protocol server.
+Indentation and white space in examples are provided only to illustrate element relationships and are not required features of this protocol.
+</t>
+
+<t>
+A protocol client that is authorized to manage an existing object is described as a "sponsoring" client throughout this document.
+</t>
+
+<t>
+XML is case sensitive.
+Unless stated otherwise, XML specifications and examples provided in this document <bcp14>MUST</bcp14> be interpreted in the character case presented in order to develop a conforming implementation.
+</t>
+
+<t>
+EPP uses XML namespaces to provide an extensible object management framework and to identify schemas required for XML instance parsing and validation.
+These namespaces and schema definitions are used to identify both the base protocol schema and the schemas for managed objects.
+</t>
+
+<t>
+The XML namespace prefixes used in examples (such as the string <tt>deleg</tt> in <tt>deleg:create</tt>) are solely for illustrative purposes.
+A conforming implementation <bcp14>MUST NOT</bcp14> require the use of these or any other specific namespace prefixes.
+</t>
+
+</section>
+
+<section anchor="extension-elements">
+<name>Extension elements</name>
+
+<t>
+This document defines a new element, <tt>&lt;deleg:deleg&gt;</tt>, which appears in query and transform commands for domain objects.
+</t>
+
+<t>
+This element is a representation of a <tt>DELEG</tt> record in XML.
+Note that <tt>DELEG</tt> records have the same presentation format as <tt>SVCB</tt> records (<xref target="RFC9460"/>).
+</t>
+
+<t>
+The <tt>&lt;deleg:deleg&gt;</tt> element has the following attributes:
+</t>
+
+<ul>
+
+<li>
+a <tt>priority</tt> attribute, which is an integer that corresponds to the <tt>SvcPriority</tt> field;
+</li>
+
+<li>
+a <tt>target</tt> attribute, which is an integer that corresponds to the <tt>TargetName</tt> field.
+</li>
+
+</ul>
+
+<t>
+The <tt>&lt;deleg:deleg&gt;</tt> element has a single child element, <tt>&lt;deleg:params&gt;</tt>, which corresponds to the <tt>svcParams</tt> field.
+<tt>DELEG</tt> record SvcParams are mapped onto this element's attributes, with <tt>SvcParamKey</tt> being the attribute name, and <tt>SvcParamValue</tt> being its value.
+</t>
+
+<t>
+Example <tt>&lt;deleg:deleg&gt;</tt> element:
+</t>
+
+<sourcecode><![CDATA[
+<deleg:deleg
+  priority="0"
+  target="ns1.example.com">
+  <deleg:params
+    alpn="dot"
+    tlsa="2 0 1 ABC..."
+    ipv4hint="192.0.2.1"
+    ipv6hint="2001:DB8::1"/>
+</deleg:deleg>
+]]></sourcecode>
+
+</section>
+
+<section>
+<name>EPP command mapping</name>
+
+<section>
+<name>EPP query commands</name>
+
+<section>
+<name>EPP <tt>&lt;info&gt;</tt> command</name>
+
+<t>
+This extension defines an additional element for EPP <tt>&lt;info&gt;</tt> responses for domain object.
+</t>
+
+<t>
+When a server receives a domain or host <tt>&lt;info&gt;</tt> command from a client which included the extension namespace in the <tt>&lt;svcExtension&gt;</tt> element of the <tt>&lt;login&gt;</tt> command, the response <bcp14>MUST</bcp14> contain an <tt>&lt;extension&gt;</tt> element, which <bcp14>MUST</bcp14> contain a <tt>&lt;deleg:infData&gt;</tt> element.
+This element <bcp14>MAY</bcp14> contain one or more <tt>&lt;deleg:deleg&gt;</tt> elements as described in <xref target="extension-elements"/>.
+</t>
+
+<t>
+Example <tt>&lt;info&gt;</tt> response:
+</t>
+
+<sourcecode><xi:include parse="text" href="examples/domain-info-response.xml.txt"/></sourcecode>
+
+</section>
+
+</section>
+
+<section>
+<name>EPP transform commands</name>
+
+<section>
+<name>EPP <tt>&lt;create&gt;</tt> command</name>
+
+<t>
+This extension defines an additional element for EPP <tt>&lt;create&gt;</tt> commands for domain objects.
+</t>
+
+<t>
+The <tt>&lt;command&gt;</tt> element of the <tt>&lt;create&gt;</tt> command frame <bcp14>MAY</bcp14> contain an <tt>&lt;extension&gt;</tt> element which <bcp14>MAY</bcp14> contain a <tt>&lt;deleg:create&gt;</tt> element.
+This element <bcp14>MUST</bcp14> contain one or more <tt>&lt;deleg:deleg&gt;</tt> records as described in <xref target="extension-elements"/>.
+</t>
+
+<t>
+Example <tt>&lt;create&gt;</tt> command:
+</t>
+
+<sourcecode><xi:include parse="text" href="examples/domain-create-command.xml.txt"/></sourcecode>
+
+</section>
+
+<section>
+<name>EPP <tt>&lt;update&gt;</tt> command</name>
+
+<t>
+This extension defines an additional element for EPP <tt>&lt;update&gt;</tt> commands for domain objects.
+</t>
+
+<t>
+The <tt>&lt;command&gt;</tt> element of the <tt>&lt;create&gt;</tt> command frame <bcp14>MAY</bcp14> contain an <tt>&lt;extension&gt;</tt> element which <bcp14>MAY</bcp14> contain a <tt>&lt;deleg:update&gt;</tt> element.
+</t>
+
+<t>
+The <tt>&lt;deleg:update&gt;</tt> element has the following child elements:
+</t>
+
+<ul>
+  <li>An <bcp14>OPTIONAL</bcp14> <tt>&lt;deleg:add&gt;</tt> element, containing any <tt>&lt;deleg:deleg&gt;</tt> records to be added to the domain; and</li>
+  <li>An <bcp14>OPTIONAL</bcp14> <tt>&lt;deleg:rem&gt;</tt> element, containing any <tt>&lt;deleg:deleg&gt;</tt> records to be removed from the domain.</li>
+</ul>
+
+<t>
+Example <tt>&lt;update&gt;</tt> command, which removes one <tt>&lt;deleg:deleg&gt;</tt> record and adds another:
+</t>
+
+<sourcecode><xi:include parse="text" href="examples/domain-update-command.xml.txt"/></sourcecode>
+
+<t>
+Example <tt>&lt;update&gt;</tt> command, which removes one <tt>&lt;deleg:deleg&gt;</tt> record but does not add any:
+</t>
+
+<sourcecode><xi:include parse="text" href="examples/domain-update-rem-only-command.xml.txt"/></sourcecode>
+
+<t>
+Example <tt>&lt;update&gt;</tt> command, which adds one <tt>&lt;deleg:deleg&gt;</tt> record but does not remove any:
+</t>
+
+<sourcecode><xi:include parse="text" href="examples/domain-update-add-only-command.xml.txt"/></sourcecode>
+
+</section>
+
+</section>
+
+</section>
+
+<section>
+<name>Relationship between DELEG and host objects/attributes</name>
+
+<t>TODO</t>
+</section>
+
+<section>
+<name>Security considerations</name>
+
+<t>TODO</t>
+</section>
+
+<section anchor="formal-syntax">
+<name>Formal syntax</name>
+
+<t>
+The formal syntax presented here is a complete schema representation of the extension suitable for automated validation of EPP XML instances.
+</t>
+
+<sourcecode><xi:include parse="text" href="deleg-&VERSION;.xsd"/></sourcecode>
+
+</section>
+
+<section>
+<name>IANA considerations</name>
+
+<section>
+<name>XML Namespace</name>
+
+<t>
+This document uses URNs to describe XML namespaces and XML schemas conforming to a registry mechanism described in <xref target="RFC3688"/>.
+The following URI assignment has been made by IANA:
+</t>
+
+<t>
+Registration for the DELEG namespace:
+</t>
+
+<t>
+<strong>URI:</strong> <tt>urn:ietf:params:xml:ns:epp:deleg-&VERSION;</tt>
+</t>
+
+<t>
+<strong>Registrant Contact:</strong> See the author(s) of this document
+</t>
+
+<t>
+<strong>XML:</strong> None. Namespace URIs do not represent an XML specification
+</t>
+
+<t>
+Registration for the DELEG XML schema:
+</t>
+
+<t>
+<strong>URI:</strong>
+<tt>urn:ietf:params:xml:schema:epp:deleg-&VERSION;</tt>
+</t>
+
+<t>
+<strong>Registrant Contact:</strong>
+See the author(s) of this document
+</t>
+
+<t>
+<strong>XML:</strong>
+See the "<xref target="formal-syntax" format="title"/>" section of this document
+</t>
+
+</section>
+
+<section>
+<name>EPP Extension Registry</name>
+
+<t>
+The EPP extension described in this document has been registered by the IANA in the Extensions for the "Extensible Provisioning Protocol (EPP)" registry described in <xref target="RFC7451"/>.
+The details of the registration are as follows:
+</t>
+
+<t>
+<strong>Name of Extension:</strong> Extensible Provisioning Protocol (EPP) Mapping for DELEG records
+</t>
+
+<t>
+<strong>Document Status:</strong>
+Standards Track
+</t>
+
+<t>
+<strong>Reference:</strong>
+URL of this document
+</t>
+
+<t>
+<strong>Registrant Name and Email Address:</strong>
+See the author(s) of this document
+</t>
+
+<t>
+<strong>TLDs:</strong>
+Any
+</t>
+
+<t>
+<strong>IPR Disclosure:</strong>
+None
+</t>
+
+<t>
+<strong>Status:</strong>
+Active
+</t>
+
+<t>
+<strong>Notes:</strong>
+None
+</t>
+
+</section>
+
+</section>
+
+</middle>
+
+<back>
+
+<references><name>Normative References</name>
+
+&RFC2119;
+&RFC3688;
+&RFC7451;
+&RFC8174;
+&RFC9460;
+&STD0069;
+
+<reference anchor="DELEG" target="https://github.com/fl1ger/deleg">
+  <front>
+    <title>Extensible Delegation for DNS</title>
+    <author fullname="Tim April"/>
+    <author fullname="Petr Špaček" asciiFullname="Petr Spacek"/>
+    <author fullname="Ralf Weber"/>
+    <author fullname="David C Lawrence"/>
+  </front>
+  <refcontent>Work in Progress</refcontent>
+</reference>
+
+</references>
+
+</back>
+
+</rfc>
