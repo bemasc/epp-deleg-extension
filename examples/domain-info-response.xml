@@ -19,17 +19,13 @@
     <extension>
       <deleg:infData
         xmlns:deleg="urn:ietf:params:xml:ns:epp:deleg-0.01">
-        <deleg:deleg priority="0" target="ns1.example.com">
+        <deleg:deleg priority="1" target="ns1.example.com">
           <deleg:params
-            alpn="dot"
-            tlsa="2 0 1 ABC..."
             ipv4hint="192.0.2.1"
             ipv6hint="2001:DB8::1"/>
         </deleg:deleg>
         <deleg:deleg priority="1" target="ns2.example.net">
           <deleg:params
-            alpn="dot"
-            tlsa="2 0 1 XYZ..."
             ipv4hint="192.0.2.2"
             ipv6hint="2001:DB8::2"/>
         </deleg:deleg>
