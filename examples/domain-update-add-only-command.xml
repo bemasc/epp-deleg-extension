@@ -12,8 +12,6 @@
         <deleg:add>
           <deleg:deleg priority="1" target="ns3.example.org">
             <deleg:params
-              alpn="dot"
-              tlsa="2 0 1 XYZ..."
               ipv4hint="192.0.2.3"
               ipv6hint="2001:DB8::3"/>
           </deleg:deleg>

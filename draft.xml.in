@@ -174,11 +174,9 @@ Example <tt>&lt;deleg:deleg&gt;</tt> element:
 
 <sourcecode><![CDATA[
 <deleg:deleg
-  priority="0"
+  priority="1"
   target="ns1.example.com">
   <deleg:params
-    alpn="dot"
-    tlsa="2 0 1 ABC..."
     ipv4hint="192.0.2.1"
     ipv6hint="2001:DB8::1"/>
 </deleg:deleg>
