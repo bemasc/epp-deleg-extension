@@ -174,8 +174,57 @@ The <tt>&lt;deleg:deleg&gt;</tt> element <bcp14>MAY</bcp14> have a single child 
 <tt>DELEG</tt> record SvcParams are mapped onto this element's attributes, with <tt>SvcParamKey</tt> being the attribute name, and <tt>SvcParamValue</tt> being its value.
 </t>
 
+</section>
+
+<section>
+<name>Restriction on element values</name>
+
+<ol>
+
+<li>
+To avoid infinite loops, if the <tt>priority</tt> attribute of a <tt>&lt;deleg:deleg&gt;</tt> record is zero, the <tt>target</tt> attribute <bcp14>MUST NOT</bcp14> match the domain name or any subordinate name,
+for example, a <tt>&lt;deleg:deleg&gt;</tt> element for the domain <tt>example.com</tt> <bcp14>MUST NOT</bcp14> have a <tt>target</tt> attribute equal to <tt>example.com</tt>, <tt>subdomain.example.com</tt>, etc.
+</li>
+
+<li>
+If the <tt>priority</tt> attribute of a <tt>&lt;deleg:deleg&gt;</tt> record is non-zero, then the <tt>target</tt> attribute <bcp14>MAY</bcp14> match the domain name or any subordinate name,
+but <bcp14>MUST</bcp14> have a <tt>&lt;deleg:params&gt;</tt> child element which <bcp14>MUST</bcp14> contain an <tt>ipv4hint</tt> attribute and/or an <tt>ipv6hint</tt> attribute.
+</li>
+
+<li>
+EPP servers <bcp14>MUST</bcp14> accept any <tt>&lt;deleg:params&gt;</tt> attribute which is registered in the DNS Service Bindings (SVCB) registry (<xref section="14.3" sectionFormat="of" target="RFC9460"/>),
+but <bcp14>MAY</bcp14> accept additional attribute names according to server policy.
+</li>
+
+</ol>
+
 <t>
-Example <tt>&lt;deleg:deleg&gt;</tt> element:
+EPP servers <bcp14>MUST</bcp14> reject <tt>&lt;create&gt;</tt> and <tt>&lt;update&gt;</tt> commands containing <tt>&lt;deleg:deleg&gt;</tt> that do not conform to these restrictions with a 2005 "Parameter value syntax error" result code.
+</t>
+
+<t>
+<xref section="2.4.2" sectionFormat="of" target="RFC9460"/> states that the use of SvcParams in AliasMode records is currently not defined, but that a future specification may extend AliasMode records to include SvcParams.
+Therefore EPP servers <bcp14>MAY</bcp14> reject commands which contain <tt>&lt;deleg:deleg&gt;</tt> elements which have a <tt>priority</tt> attribute equal to zero,
+and a child <tt>&lt;deleg:params&gt;</tt> element, with a 2306 "Parameter value policy error" result code.
+</t>
+
+</section>
+
+<section>
+<name>Examples</name>
+
+<t>
+Example "AliasMode" <tt>&lt;deleg:deleg&gt;</tt> element:
+</t>
+
+<sourcecode><![CDATA[
+<deleg:deleg
+  priority="0"
+  target="config.example.net"/>
+]]></sourcecode>
+
+<t>
+Example "ServiceMode" <tt>&lt;deleg:deleg&gt;</tt> element:
 </t>
 
 <sourcecode><![CDATA[
@@ -296,7 +345,6 @@ It is anticpated that until there is widespread support for <tt>DELEG</tt> in re
 Therefore, EPP servers <bcp14>SHOULD</bcp14> allow clients to configure domain names to have both <tt>DELEG</tt> records and host objects or host attributes.
 </t>
 
-<t>TODO</t>
 </section>
 
 <section>
