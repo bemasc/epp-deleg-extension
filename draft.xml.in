@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!DOCTYPE rfc [
-
 <!ENTITY VERSION "0.01">
 <!ENTITY RFC2119 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
-<!ENTITY RFC3688 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3688.xml">
-<!ENTITY RFC7451 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7451.xml">
-<!ENTITY RFC8174 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml">
-<!ENTITY RFC9460 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9460.xml">
-<!ENTITY STD0069 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.STD.0069.xml">
-<!ENTITY DELEG   SYSTEM "https://datatracker.ietf.org/doc/bibxml3/draft-dnsop-deleg-00.xml">
 ]>
 
 <rfc
@@ -475,13 +468,13 @@ None
 
 <references><name>Normative References</name>
 
-&RFC2119;
-&RFC3688;
-&RFC7451;
-&RFC8174;
-&RFC9460;
-&STD0069;
-&DELEG;
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3688.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7451.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9460.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml9/reference.STD.0069.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.dnsop-deleg.xml"/>
 
 </references>
 

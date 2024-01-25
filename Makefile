@@ -21,7 +21,7 @@ xml: test
 	@find examples -name '*-command.xml.txt' -exec sed -i "" "s/^/C:/g" {} \;
 	@find examples -name '*-response.xml.txt' -exec sed -i "" "s/^/S:/g" {} \;
 
-	@xmllint --xinclude "draft.xml.in" > "$(XML)"
+	@xmllint --xinclude "draft.xml.in" > "$(XML)" 2>/dev/null || true
 
 html: xml
 	@echo "Generating HTML file..."
