@@ -17,11 +17,10 @@
   version="3"
   ipr="trust200902"
   docName="draft-brown-epp-deleg-00"
-  submissionType="IETF"
-  category="std"
+  submissionType="independent"
+  category="info"
   xml:lang="en"
-  indexInclude="true"
-  consensus="true">
+  indexInclude="true">
 
 <front>
 
@@ -31,8 +30,8 @@ Extensible Provisioning Protocol (EPP) mapping for DELEG records
 
 <seriesInfo
   value="draft-brown-epp-deleg"
-  stream="IETF"
-  status="standard"
+  stream="independent"
+  status="informational"
   name="Internet-Draft"/>
 
 <author initials="G." surname="Brown" fullname="Gavin Brown">
