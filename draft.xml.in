@@ -9,7 +9,7 @@
 <!ENTITY RFC8174 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml">
 <!ENTITY RFC9460 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9460.xml">
 <!ENTITY STD0069 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.STD.0069.xml">
-
+<!ENTITY DELEG   SYSTEM "https://datatracker.ietf.org/doc/bibxml3/draft-dnsop-deleg-00.xml">
 ]>
 
 <rfc
@@ -84,7 +84,7 @@ The source for this draft, and an issue tracker, may can be found at <eref targe
 <name>Introduction</name>
 
 <t>
-A small group of DNS engineers is currently working on a document entitled "Extensible Delegation for DNS" (<xref target="DELEG"/>), which aims to provide an enhanced method of delegation in the DNS, as an alternative to the traditional <tt>NS</tt> record.
+The Internet-Draft "Extensible Delegation for DNS" (<xref target="I-D.dnsop-deleg"/>) aims to provide an enhanced method of delegation in the DNS, as an alternative to the traditional <tt>NS</tt> record.
 </t>
 
 <!--<t>
@@ -412,17 +412,7 @@ None
 &RFC8174;
 &RFC9460;
 &STD0069;
-
-<reference anchor="DELEG" target="https://github.com/fl1ger/deleg">
-  <front>
-    <title>Extensible Delegation for DNS</title>
-    <author fullname="Tim April"/>
-    <author fullname="Petr Špaček" asciiFullname="Petr Spacek"/>
-    <author fullname="Ralf Weber"/>
-    <author fullname="David C Lawrence"/>
-  </front>
-  <refcontent>Work in Progress</refcontent>
-</reference>
+&DELEG;
 
 </references>
 
