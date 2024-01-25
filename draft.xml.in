@@ -350,7 +350,8 @@ Therefore, EPP servers <bcp14>SHOULD</bcp14> allow clients to configure domain n
 <section>
 <name>Security considerations</name>
 
-<t>TODO</t>
+<t>Are there any?</t>
+
 </section>
 
 <section anchor="formal-syntax">
