@@ -164,7 +164,7 @@ a <tt>priority</tt> attribute, which is an integer that corresponds to the <tt>S
 </li>
 
 <li>
-a <tt>target</tt> attribute, which is an integer that corresponds to the <tt>TargetName</tt> field.
+a <tt>target</tt> attribute, which corresponds to the <tt>TargetName</tt> field.
 </li>
 
 </ul>
