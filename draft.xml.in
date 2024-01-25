@@ -286,7 +286,15 @@ Example <tt>&lt;update&gt;</tt> command, which adds one <tt>&lt;deleg:deleg&gt;<
 </section>
 
 <section>
-<name>Relationship between DELEG and host objects/attributes</name>
+<name>Relationship between <tt>DELEG</tt> and host objects/attributes</name>
+
+<t>
+It is anticpated that until there is widespread support for <tt>DELEG</tt> in resolvers, that most domains will need both <tt>DELEG</tt> and traditional <tt>NS</tt> records published in their parent zone.
+</t>
+
+<t>
+Therefore, EPP servers <bcp14>SHOULD</bcp14> allow clients to configure domain names to have both <tt>DELEG</tt> records and host objects or host attributes.
+</t>
 
 <t>TODO</t>
 </section>
