@@ -170,7 +170,7 @@ a <tt>target</tt> attribute, which corresponds to the <tt>TargetName</tt> field.
 </ul>
 
 <t>
-The <tt>&lt;deleg:deleg&gt;</tt> element has a single child element, <tt>&lt;deleg:params&gt;</tt>, which corresponds to the <tt>svcParams</tt> field.
+The <tt>&lt;deleg:deleg&gt;</tt> element <bcp14>MAY</bcp14> have a single child element, <tt>&lt;deleg:params&gt;</tt>, which corresponds to the <tt>svcParams</tt> field.
 <tt>DELEG</tt> record SvcParams are mapped onto this element's attributes, with <tt>SvcParamKey</tt> being the attribute name, and <tt>SvcParamValue</tt> being its value.
 </t>
 
