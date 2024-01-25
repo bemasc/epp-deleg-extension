@@ -99,6 +99,13 @@ Past experience with innovations in the DNS suggests that the success or failure
 <!-- Therefore, this document has been created to describe -->This document describes an extension to the EPP domain mapping (<xref target="RFC5731"/>) to allow EPP clients to provision <tt>DELEG</tt> records for domain names in an EPP server.
 </t>
 
+<t>
+EPP's provides mechanisms for extending the protocol by (a) adding new properties to existing object mappings and (b) definining new object mappings.
+Although EPP supports two different models for traditional <tt>NS</tt> records (host attributes and host objects, as described in <xref section="1.12" sectionFormat="of" target="RFC5731"/>),
+this document only uses the former, and does not define a new object mapping for <tt>DELEG</tt> records, since the <tt>DELEG</tt> specification itself implements many of the features that would otherwise require an object mapping:
+for example the "AliasMode" mode, which allows the delegation information for many domains to be managed as a single set.
+</t>
+
 </section>
 
 <section>
