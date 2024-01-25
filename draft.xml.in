@@ -100,9 +100,9 @@ Past experience with innovations in the DNS suggests that the success or failure
 </t>
 
 <t>
-EPP's provides mechanisms for extending the protocol by (a) adding new properties to existing object mappings and (b) definining new object mappings.
+EPP provides mechanisms for extending the protocol by (a) adding new properties to existing object mappings and (b) definining new object mappings.
 Although EPP supports two different models for traditional <tt>NS</tt> records (host attributes and host objects, as described in <xref section="1.12" sectionFormat="of" target="RFC5731"/>),
-this document only uses the former, and does not define a new object mapping for <tt>DELEG</tt> records, since the <tt>DELEG</tt> specification itself implements many of the features that would otherwise require an object mapping:
+this document only uses the former, and does not define a new object mapping for <tt>DELEG</tt> records because the <tt>DELEG</tt> specification itself implements many of the features that would otherwise require an object mapping:
 for example the "AliasMode" mode, which allows the delegation information for many domains to be managed as a single set.
 </t>
 
@@ -176,8 +176,9 @@ The <tt>&lt;deleg:deleg&gt;</tt> element <bcp14>MAY</bcp14> have a single child 
 
 </section>
 
+<!--
 <section>
-<name>Restriction on element values</name>
+<name>Restrictions on Element Values</name>
 
 <ol>
 
@@ -209,6 +210,8 @@ and a child <tt>&lt;deleg:params&gt;</tt> element, with a 2306 "Parameter value 
 </t>
 
 </section>
+
+-->
 
 <section>
 <name>Examples</name>
@@ -338,7 +341,7 @@ Example <tt>&lt;update&gt;</tt> command, which adds one <tt>&lt;deleg:deleg&gt;<
 <name>Relationship between <tt>DELEG</tt> and host objects/attributes</name>
 
 <t>
-It is anticpated that until there is widespread support for <tt>DELEG</tt> in resolvers, that most domains will need both <tt>DELEG</tt> and traditional <tt>NS</tt> records published in their parent zone.
+It is anticpated that most domains will need both <tt>DELEG</tt> and traditional <tt>NS</tt> records published in their parent zone for the foreseeable future.
 </t>
 
 <t>
@@ -348,9 +351,11 @@ Therefore, EPP servers <bcp14>SHOULD</bcp14> allow clients to configure domain n
 </section>
 
 <section>
-<name>Security considerations</name>
+<name>Security Considerations</name>
 
-<t>Are there any?</t>
+<t>Under the initial design of the <tt>DELEG</tt> record, the security implications of propoerly carrying the record in EPP,
+and name servers using such information in zones, are similar to the security implications for <tt>NS</tt> records.
+If there are later extensions to the <tt>DELEG</tt> record, those extension may have different security considerations that will need to be documented.</t>
 
 </section>
 
