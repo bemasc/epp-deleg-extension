@@ -2,14 +2,13 @@
 
 <!DOCTYPE rfc [
 <!ENTITY VERSION "0.01">
-<!ENTITY RFC2119 SYSTEM "https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
 ]>
 
 <rfc
   xmlns:xi="http://www.w3.org/2001/XInclude"
   version="3"
   ipr="trust200902"
-  docName="draft-brown-epp-deleg-00"
+  docName="draft-brown-epp-deleg-01"
   submissionType="independent"
   category="info"
   xml:lang="en"
@@ -476,7 +475,7 @@ None
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9460.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml-rfcsubseries/reference.STD.0069.xml"/>
-<xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.dnsop-deleg.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml-ids/reference.I-D.dnsop-deleg.xml"/>
 
 </references>
 
