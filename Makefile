@@ -1,4 +1,4 @@
-VERSION = prerelease
+VERSION = 00
 DOC = "draft-brown-epp-deleg-$(VERSION)"
 XML = "$(DOC).xml"
 
