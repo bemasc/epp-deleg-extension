@@ -466,6 +466,8 @@ None
 
 <back>
 
+<displayreference target="I-D.dnsop-deleg" to="DELEG"/>
+
 <references><name>Normative References</name>
 
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml-rfcsubseries/reference.RFC.2119.xml"/>
