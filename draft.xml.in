@@ -163,8 +163,17 @@ a <tt>target</tt> attribute, which corresponds to the <tt>TargetName</tt> field.
 
 <t>
 The <tt>&lt;deleg:deleg&gt;</tt> element <bcp14>MAY</bcp14> have a single child element, <tt>&lt;deleg:params&gt;</tt>, which corresponds to the <tt>svcParams</tt> field.
-<tt>DELEG</tt> record SvcParams are mapped onto this element's attributes, with <tt>SvcParamKey</tt> being the attribute name, and <tt>SvcParamValue</tt> being its value.
+<tt>DELEG</tt> record SvcParams are mapped onto this element's attributes with the <tt>SvcParamKey</tt> providing the attribute's name, and the <tt>SvcParamValue</tt> providing its value.
+To recover the value, the recipient MUST perform XML Character Reference expansion on the attribute value and extract the value as a sequence of Unicode codepoints.
+Each codepoint MUST have a value in the range 0-255.  The recipient MUST convert these codepoints to octets to compute the SvcParam's presentation <tt>value</tt>.
 </t>
+
+<sourcecode><![CDATA[
+XML Parameter                        Equivalent DNS Zone File
+-------------                        ------------------------
+ipv4hint="192.0.2.1"                 ipv4hint="192.0.2.1"
+key65534="Octet value 191: &iquest;" key65534="Octet value 191: \191"
+]]></sourcecode>
 
 </section>
 
